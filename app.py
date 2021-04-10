@@ -11,10 +11,10 @@ import json
 from bson import json_util
 import time
 
-cluster = MongoClient('mongodb+srv://talha:talha@cluster0.xvmvm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
-db = cluster["JR"]
-collection = db["TS"]
-PATH ="/home/talha/Downloads/chromedriver_linux64/chromedriver"
+cluster = MongoClient('mongodb+srv://<username>:<password>@cluster0.xvmvm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority') #Enter your Mongo Cluster Connection Code here
+db = cluster["JR"]  #Enter your database name 
+collection = db["TS"]   #Enter your collection name
+PATH ="/home/talha/Downloads/chromedriver_linux64/chromedriver" #Driver Path location
 driver = webdriver.Chrome(PATH)
 
 def collect_data(driver,i):
@@ -42,6 +42,6 @@ collect_data(driver,0)
 def func(i):
     print("talha" + i)
 
-for j in range(4):
+for j in range(4): #Number of pages to scrap
     driver.get("https://in.indeed.com/jobs?q=data+scientist&start=" + str((j+1)*10))
     collect_data(driver,j)
